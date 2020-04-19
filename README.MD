@@ -26,11 +26,14 @@ Their installation guide are in:  https://docs.docker.com/install/ and https://d
 **YOU MUST HAVE DOCKER AND DOCKER COMPOSE INSTALLED**
  1. Clone this repository or download its zip;
  2. Go to the repository folder and run the following command in your terminal:
-	 2.1. `docker-compose up` 
+    - 2.1. `docker-compose up` 
 3. This may take few minutes because MongoDB image will import all csv data;
 4. Go to http://localhost:8888/swagger-ui.html, there are all requests that this API answers and all information you'll to run your tests;
+5. If you want to run the tests, you **must** delete the docker containers for MongoDB using the following command:
+   - 5.1 docker rm mongodb
+   - 5.2 docker rm mongo_seed
 
-### Project Organization
+## Project Organization
 - The api source code is under the `src` folder;
 - In the folder `data` we have the .csv that will be used and its initialization script;
   

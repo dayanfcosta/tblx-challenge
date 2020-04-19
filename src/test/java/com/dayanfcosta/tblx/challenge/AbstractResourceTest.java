@@ -59,3 +59,4 @@ public abstract class AbstractResourceTest {
         .append("atStop", documentNumber % 2 == 0);
   }
 }
+

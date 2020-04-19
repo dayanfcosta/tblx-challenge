@@ -1,0 +1,10 @@
+logging:
+  level:
+    org.springframework.data.mongodb: DEBUG
+spring:
+  data:
+    mongodb:
+      database: gps-api
+      host: localhost
+      port: 0
+      auto-index-creation: false
