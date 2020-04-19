@@ -16,10 +16,10 @@ class VehicleService {
     this.repository = repository;
   }
 
-  Set<Integer> findAll(final LocalDate startTime, final LocalDate endTime, final String operatorId) {
+  Set<Integer> findAll(final LocalDate startTime, final LocalDate endTime, final String operatorId, final boolean atStop) {
     Validate.isTrue(!startTime.isAfter(endTime), "End time MUST be after or equals start time");
     Validate.notBlank(operatorId, "Invalid operator ID");
-    final List<Integer> vehicleIds = repository.findAll(startTime, endTime, operatorId);
+    final List<Integer> vehicleIds = repository.findAll(startTime, endTime, operatorId, atStop);
     return new HashSet<>(vehicleIds);
   }
 }

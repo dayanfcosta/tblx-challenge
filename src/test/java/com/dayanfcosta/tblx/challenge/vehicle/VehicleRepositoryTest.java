@@ -22,11 +22,20 @@ class VehicleRepositoryTest extends AbstractRepositoryTest {
   }
 
   @Test
-  void whenFindAll_returnAllVehiclesFound() {
-    final List<Integer> vehicles = repository.findAll(now(), now().plusDays(2), OPERATOR_ID);
+  void whenFindAllNotAtStop_returnAllVehiclesFound() {
+    final List<Integer> vehicles = repository.findAll(now(), now().plusDays(2), OPERATOR_ID, false);
 
     assertThat(vehicles).isNotNull();
     assertThat(vehicles).isNotEmpty();
-    assertThat(vehicles).hasSize(3);
+    assertThat(vehicles).hasSize(1);
+  }
+
+  @Test
+  void whenFindAllAtStop_returnAllVehiclesFound() {
+    final List<Integer> vehicles = repository.findAll(now(), now().plusDays(2), OPERATOR_ID, true);
+
+    assertThat(vehicles).isNotNull();
+    assertThat(vehicles).isNotEmpty();
+    assertThat(vehicles).hasSize(2);
   }
 }

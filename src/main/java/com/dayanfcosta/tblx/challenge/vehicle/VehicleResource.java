@@ -21,7 +21,8 @@ class VehicleResource {
 
   Mono<Set<Integer>> findAll(@RequestParam @DateTimeFormat(iso = ISO.DATE) final LocalDate startTime,
       @RequestParam @DateTimeFormat(iso = ISO.DATE) final LocalDate endTime,
-      @RequestParam final String operator) {
-    return Mono.just(service.findAll(startTime, endTime, operator));
+      @RequestParam final String operator,
+      @RequestParam(defaultValue = "false", required = false) final boolean atStop) {
+    return Mono.just(service.findAll(startTime, endTime, operator, atStop));
   }
 }

@@ -57,7 +57,7 @@ public abstract class AbstractRepositoryTest {
         .append("blockId", documentNumber)
         .append("vehicleId", documentNumber)
         .append("stopId", documentNumber)
-        .append("atStop", false);
+        .append("atStop", documentNumber % 2 == 0);
   }
 
 }
