@@ -2,11 +2,11 @@ server:
   port: 8888
 spring:
   application:
-    name: financial-control
+    name: api-challenge
   data:
     mongodb:
       database: gps-api
-      host: localhost
+      host: mongodb
       port: 27017
       auto-index-creation: false
   main:
