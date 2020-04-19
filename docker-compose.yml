@@ -14,23 +14,24 @@ services:
     links:
       - mongodb
     volumes:
-      - ./data:/data
-    command: /data/import.sh
+      - ./artifacts/database:/data
+    command: /data/database-import.sh
     networks:
       - api-challenge
 
-#  api:
-#    image: adoptopenjdk/openjdk11:jdk11u-alpine-nightly-slim
-#    container_name: api-server
-#    volumes:
-#      - ${PWD}/target:/user/share/api-jar
-#    command: java -jar /user/share/api-jar/api.jar
-#    ports:
-#      - 8888:8888
-#    depends_on:
-#      - mongodb
-#    networks:
-#      - api-challenge
+  api:
+    image: adoptopenjdk/openjdk11:jdk11u-alpine-nightly-slim
+    container_name: api-server
+    volumes:
+      - ${PWD}/artifacts/jar:/user/share/api-jar
+    command: >
+      sh -c "java -jar /user/share/api-jar/api.jar"
+    ports:
+      - 8888:8888
+    depends_on:
+      - mongo_seed
+    networks:
+      - api-challenge
 
 networks:
   api-challenge:
