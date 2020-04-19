@@ -1,0 +1,37 @@
+version: '3.7'
+services:
+  mongodb:
+    image: mongo
+    container_name: mongodb
+    ports:
+      - 27017:27017
+    networks:
+      - api-challenge
+
+  mongo_seed:
+    image: mongo
+    container_name: mongo_seed
+    links:
+      - mongodb
+    volumes:
+      - ./data:/data
+    command: /data/import.sh
+    networks:
+      - api-challenge
+
+#  api:
+#    image: adoptopenjdk/openjdk11:jdk11u-alpine-nightly-slim
+#    container_name: api-server
+#    volumes:
+#      - ${PWD}/target:/user/share/api-jar
+#    command: java -jar /user/share/api-jar/api.jar
+#    ports:
+#      - 8888:8888
+#    depends_on:
+#      - mongodb
+#    networks:
+#      - api-challenge
+
+networks:
+  api-challenge:
+    driver: bridge
