@@ -6,10 +6,12 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 import static org.assertj.core.api.Assertions.assertThatNullPointerException;
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.ArgumentMatchers.eq;
 import static org.mockito.Mockito.when;
 import static org.mockito.MockitoAnnotations.initMocks;
 
+import java.time.LocalDate;
 import java.util.Set;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -33,7 +35,7 @@ class VehicleServiceTest {
 
   @Test
   void whenFindAllNotAtStop_returnAllIdsFound() {
-    when(repository.findAll(any(), any(), any(), eq(false))).thenReturn(asList(1, 2, 3));
+    when(repository.findAll(any(LocalDate.class), any(LocalDate.class), anyString(), eq(false))).thenReturn(asList(1, 2, 3));
 
     final Set<Integer> vehicleIds = service.findAll(now(), now().plusDays(2), OPERATOR, false);
 
@@ -44,7 +46,7 @@ class VehicleServiceTest {
 
   @Test
   void whenFindAllAtStop_returnAllIdsFound() {
-    when(repository.findAll(any(), any(), any(), eq(true))).thenReturn(asList(1, 2, 3));
+    when(repository.findAll(any(LocalDate.class), any(LocalDate.class), anyString(), eq(true))).thenReturn(asList(1, 2, 3));
 
     final Set<Integer> vehicleIds = service.findAll(now(), now().plusDays(2), OPERATOR, true);
 

@@ -1,5 +1,6 @@
 package com.dayanfcosta.tblx.challenge;
 
+import static com.dayanfcosta.tblx.challenge.shared.Constants.GPS_DATA_COLLECTION;
 import static java.time.LocalDate.now;
 import static java.util.stream.Collectors.toList;
 
@@ -29,7 +30,7 @@ public abstract class AbstractRepositoryTest {
 
   @AfterEach
   void tearDown() {
-    mongoTemplate.dropCollection("gps-data");
+    mongoTemplate.dropCollection(GPS_DATA_COLLECTION);
   }
 
   protected MongoTemplate getMongoTemplate() {
@@ -38,7 +39,7 @@ public abstract class AbstractRepositoryTest {
 
   private void insertDocuments() {
     final var documents = IntStream.rangeClosed(0, 10).mapToObj(this::createDocument).collect(toList());
-    getMongoTemplate().insert(documents, "gps-data");
+    getMongoTemplate().insert(documents, GPS_DATA_COLLECTION);
   }
 
   private Document createDocument(final int documentNumber) {

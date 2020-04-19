@@ -8,6 +8,7 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 import static org.mockito.MockitoAnnotations.initMocks;
 
+import java.time.LocalDate;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
@@ -31,7 +32,7 @@ class OperatorServiceTest {
 
   @Test
   void whenFindAll_returnsSetWithAllOperatorsFound() {
-    when(repository.findAll(any(), any())).thenReturn(asList(OPERATOR_1, OPERATOR_2));
+    when(repository.findAll(any(LocalDate.class), any(LocalDate.class))).thenReturn(asList(OPERATOR_1, OPERATOR_2));
 
     final var operators = service.findAll(now(), now().plusDays(2));
 
@@ -43,7 +44,7 @@ class OperatorServiceTest {
 
   @Test
   void whenFindAllWithEqualStartAndEndTime_returnsSetWithAllOperatorsFound() {
-    when(repository.findAll(any(), any())).thenReturn(asList(OPERATOR_1, OPERATOR_2));
+    when(repository.findAll(any(LocalDate.class), any(LocalDate.class))).thenReturn(asList(OPERATOR_1, OPERATOR_2));
 
     final var operators = service.findAll(now(), now());
 
