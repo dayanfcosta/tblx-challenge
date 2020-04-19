@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.util.Set;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.format.annotation.DateTimeFormat.ISO;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -19,6 +20,7 @@ class VehicleResource {
     this.service = service;
   }
 
+  @GetMapping
   Mono<Set<Integer>> findAll(@RequestParam @DateTimeFormat(iso = ISO.DATE) final LocalDate startTime,
       @RequestParam @DateTimeFormat(iso = ISO.DATE) final LocalDate endTime,
       @RequestParam final String operator,
