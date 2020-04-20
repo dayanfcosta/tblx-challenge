@@ -41,13 +41,13 @@ Their installation guide are in:  https://docs.docker.com/install/ and https://d
   
 ## Endpoint answers for the challenge questions  
 List of running operators:  
-GET /operators?startTime=2012-11-10&endTime=2012-11-11  
+GET /operators?startTime=2012-11-05&endTime=2012-11-11  
   
 List of vehicle ids of a given operator:  
-GET /vehicles?startTime=2012-11-10&endTime=2012-11-11&operator=PO  
+GET /vehicles?startTime=2012-11-05&endTime=2012-11-11&operator=PO  
   
 List of vehicle ids of a given operator at stop:  
-GET /vehicles?startTime=2012-11-10&endTime=2012-11-11&operator=PO&atStop=true  
+GET /vehicles?startTime=2012-11-05&endTime=2012-11-11&operator=PO&atStop=true  
   
 List of traces of a given vehicle id:  
-GET /traces?startTime=2012-11-10&endTime=2012-11-11&vehicleId=33438
+GET /traces?startTime=2012-11-05&endTime=2012-11-11&vehicleId=33438
