@@ -36,7 +36,8 @@ Their installation guide are in:  https://docs.docker.com/install/ and https://d
 
 ## Project Organization
 - The api source code is under the `src` folder;
-- In the folder `data` we have the .csv that will be used and its initialization script;
+- In the folder `artifacts/database` we have the .csv that will be used and an initialization script;
+- In the folder `artifacts/jar` we have the `api.jar` that is our deployable artifact;
   
 ## Endpoint answers for the challenge questions  
 List of running operators:  
